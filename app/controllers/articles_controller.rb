@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
@@ -15,13 +17,16 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end
 
+  def about
+    render text: 'about'
+  end
+
   def show
     @article = Article.find(params[:id])
   end
 
   def edit
     @article = Article.find(params[:id])
-
   end
 
   def update
@@ -29,6 +34,4 @@ class ArticlesController < ApplicationController
     @article.update(title: params[:article][:title], description: params[:article][:description])
     redirect_to article_path(@article)
   end
-  
-
 end
